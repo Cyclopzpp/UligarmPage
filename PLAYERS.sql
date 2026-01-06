@@ -58,12 +58,12 @@ CREATE TABLE STATS (
     CHECK (intelligence BETWEEN 1 AND 20),
     CHECK (wisdom BETWEEN 1 AND 20),
     CHECK (charisma BETWEEN 1 AND 20),
-    CHECK (strength_mod = (strength - 10) / 2),
-    CHECK (dexterity_mod = (dexterity - 10) / 2),
-    CHECK (constitution_mod = (constitution - 10) / 2),
-    CHECK (intelligence_mod = (intelligence - 10) / 2),
-    CHECK (wisdom_mod = (wisdom - 10) / 2),
-    CHECK (charisma_mod = (charisma - 10) / 2),
+    CHECK (strength_mod = FLOOR((strength - 10) / 2)),
+    CHECK (dexterity_mod = FLOOR((dexterity - 10) / 2)),
+    CHECK (constitution_mod = FLOOR((constitution - 10) / 2)),
+    CHECK (intelligence_mod = FLOOR((intelligence - 10) / 2)),
+    CHECK (wisdom_mod = FLOOR((wisdom - 10) / 2)),
+    CHECK (charisma_mod = FLOOR((charisma - 10) / 2)),
     FOREIGN KEY (player_name, pj_id) REFERENCES PJ(player_name, pj_id)
 
 );
