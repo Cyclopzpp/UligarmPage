@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 
 # Cargar el archivo CSV
-file_path = 'Uligarm_imports.xlsx - Sheet1.csv'
-df = pd.read_csv(file_path)
+file_path = 'Uligarm_imports.xlsx'
+df = pd.read_excel(file_path)
 
 def generate_sql():
     with open('IMPORT.sql', 'w', encoding='utf-8') as f:
