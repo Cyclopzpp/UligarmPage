@@ -51,6 +51,17 @@
     </head>
     <body>
         <div class="ficha">
+            
+            <?php if (is_null($datos['pj_name'])): ?>
+                <div class="ability-section">
+                    <p>✨ Tu personaje aún no tiene nombre oficial.</p>
+                    <form action="guardar_nombre.php" method="POST">
+                        <input type="text" name="nuevo_nombre" placeholder="Ej: Arathorn" required style="width: 70%;">
+                        <button type="submit" style="width: 25%;">Guardar</button>
+                    </form>
+                </div>
+            <?php endif; ?>
+
             <h1><?php echo htmlspecialchars($datos['pj_name'] ?? 'Héroe Desconocido'); ?></h1>
             <p><strong>Raza:</strong> <?php echo $datos['pj_race']; ?> | <strong>Clase:</strong> <?php echo $datos['pj_class']; ?></p>
             <p>Nivel: <?php echo $datos['pj_level']; ?></p>
