@@ -3,7 +3,8 @@ import numpy as np
 
 # Configuración de archivos
 FILE_PATH = 'Uligarm_imports.xlsx'
-OUTPUT_SQL = '.\Page_SQL\IMPORT.sql'
+# Se usa r'' (string literal) para evitar errores con las barras invertidas \
+OUTPUT_SQL = r'.\Page_SQL\IMPORT.sql'
 
 def clean_sql_value(val, is_string=True):
     """
@@ -20,7 +21,7 @@ def clean_sql_value(val, is_string=True):
 
 def generate_sql():
     try:
-        # Cargar el archivo Excel
+        # Cargar el archivo Excel (asegúrate de que el nombre sea correcto)
         df = pd.read_excel(FILE_PATH)
         
         with open(OUTPUT_SQL, 'w', encoding='utf-8') as f:
@@ -29,14 +30,14 @@ def generate_sql():
 
             # --- 1. PLAYERS ---
             f.write("-- Inserciones para PLAYERS\n")
-            # Agrupamos por player_name y pj_id para asegurar unicidad antes de insertar
-            players = df[['player_name', 'player_passwd', 'pj_id', 'country_name']].dropna(subset=['country_name']).drop_duplicates()
+            # Se eliminó 'player_passwd' de la lista porque no existe en el archivo original
+            players = df[['player_name', 'pj_id', 'country_name']].dropna(subset=['country_name']).drop_duplicates()
             for _, row in players.iterrows():
+                # El password se mantiene como '12ab' por defecto como estaba en tu lógica
                 f.write(f"INSERT INTO PLAYERS (player_name, player_passwd, pj_id, country_name) VALUES ({clean_sql_value(row['player_name'])}, '12ab', {row['pj_id']}, {clean_sql_value(row['country_name'])});\n")
 
             # --- 2. PJ ---
             f.write("\n-- Inserciones para PJ\n")
-            # Filtramos por pj_class para evitar filas vacías
             pjs = df[['player_name', 'pj_id', 'pj_name', 'pj_genre', 'pj_level', 'pj_experience', 'pj_race', 'pj_class']].dropna(subset=['pj_class']).drop_duplicates()
             for _, row in pjs.iterrows():
                 f.write(f"INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ("
@@ -54,13 +55,11 @@ def generate_sql():
 
             # --- 4. STATS ---
             f.write("\n-- Inserciones para STATS\n")
-            # Solo procesamos filas que tengan fuerza definida
             stats = df[['player_name', 'pj_id', 'strength', 'strength_mod', 'dexterity', 'dexterity_mod', 
                         'constitution', 'constitution_mod', 'intelligence', 'intelligence_mod', 
                         'wisdom', 'wisdom_mod', 'charisma', 'charisma_mod']].dropna(subset=['strength'])
             
             for _, row in stats.iterrows():
-                # Convertimos a int para evitar el formato .0 en los números del SQL
                 vals = [clean_sql_value(row['player_name']), row['pj_id']] + [int(row[c]) for c in stats.columns[2:]]
                 f.write(f"INSERT INTO STATS VALUES ({', '.join(map(str, vals))});\n")
 

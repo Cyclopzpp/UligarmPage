@@ -22,7 +22,7 @@ INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, 
 INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('MauricioB', 5, 'Lucanar Tarknus', 'M', 1, 0, 'Humano+', 'Guerrero');
 INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('CamilaP', 6, 'Krivna Jeryn', 'F', 1, 0, 'Draconido', 'Guerrero');
 INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('CarlaB', 7, NULL, 'F', 1, 0, 'Draconido', 'Hechicero');
-INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('RaquelA', 8, NULL, 'F', 1, 0, 'Elfo del Bosque', 'Bardo');
+INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('RaquelA', 8, 'Sira Strand', 'F', 1, 0, 'Elfo del Bosque', 'Bardo');
 INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('FabianG', 9, 'Vexillum Viride', 'M', 1, 0, 'Humano', 'Picaro');
 INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('FernandaH', 10, NULL, 'F', 1, 0, 'Elfo', 'Cleriego');
 INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('PalomaO', 11, NULL, 'F', 1, 0, 'Drow', 'Hechicero');
