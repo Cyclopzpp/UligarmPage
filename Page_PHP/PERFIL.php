@@ -47,6 +47,32 @@
             .stat-val { font-size: 1.2em; font-weight: bold; }
             .ability-section { margin-top: 25px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px; }
             .logout { display: inline-block; margin-top: 20px; color: #e74c3c; text-decoration: none; font-weight: bold; }
+            .logout { display: inline-block; margin-top: 20px; color: #e74c3c; text-decoration: none; font-weight: bold; }
+
+            .ability-section input[type="text"] {
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #34495e;
+                background: #1a252f;
+                color: white;
+                outline: none;
+            }
+
+            .ability-section button[type="submit"] {
+                padding: 10px;
+                background-color: #f1c40f;
+                border: none;
+                border-radius: 5px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            .ability-section button[type="submit"]:hover {
+                background-color: #d4ac0d;
+                transform: scale(1.05);
+            }
+
         </style>
     </head>
     <body>

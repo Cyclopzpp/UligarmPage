@@ -7,11 +7,15 @@
         $user = $_SESSION['usuario'];
         $pj_id = $_SESSION['pj_id'];
 
+        // Actualizamos el nombre en la tabla PJ
         $stmt = $conn->prepare("UPDATE PJ SET pj_name = ? WHERE player_name = ? AND pj_id = ?");
         $stmt->bind_param("ssi", $nuevo_nombre, $user, $pj_id);
         
         if ($stmt->execute()) {
-            header("Location: PERFIL.php?mensaje=nombre_actualizado");
+            // Si sale bien, volvemos a la ficha para ver el nombre actualizado
+            header("Location: PERFIL.php");
+        } else {
+            echo "Error al actualizar: " . $conn->error;
         }
         $stmt->close();
     }
