@@ -70,6 +70,13 @@
                 <p><strong><?php echo $datos['special_ability_name'] ?? 'Ninguna'; ?></strong></p>
                 <small><?php echo $datos['special_ability_description'] ?? 'No hay descripción disponible.'; ?></small>
             </div>
+
+            <div class="ability-section" style="border-left: 4px solid #2ecc71;">
+                <h3>📍 Ubicación: <?php echo htmlspecialchars($datos['country_name']); ?></h3>
+                <p><strong>Gobernante:</strong> <?php echo htmlspecialchars($datos['ruler']); ?></p>
+                <p><strong>Clima:</strong> <?php echo htmlspecialchars($datos['climate']); ?></p>
+                <p style="font-style: italic;">"<?php echo htmlspecialchars($datos['country_desc']); ?>"</p>
+            </div>
             
             <a href="logout.php" class="logout">Cerrar Sesión</a>
         </div>

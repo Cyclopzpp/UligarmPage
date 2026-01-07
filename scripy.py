@@ -3,7 +3,7 @@ import numpy as np
 
 # Configuración de archivos
 FILE_PATH = 'Uligarm_imports.xlsx'
-OUTPUT_SQL = 'IMPORT.sql'
+OUTPUT_SQL = 'Page_SQL\IMPORT.sql'
 
 def clean_sql_value(val, is_string=True):
     """
@@ -30,9 +30,9 @@ def generate_sql():
             # --- 1. PLAYERS ---
             f.write("-- Inserciones para PLAYERS\n")
             # Agrupamos por player_name y pj_id para asegurar unicidad antes de insertar
-            players = df[['player_name', 'pj_id', 'country_name']].dropna(subset=['country_name']).drop_duplicates()
+            players = df[['player_name', 'player_passwd', 'pj_id', 'country_name']].dropna(subset=['country_name']).drop_duplicates()
             for _, row in players.iterrows():
-                f.write(f"INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ({clean_sql_value(row['player_name'])}, {row['pj_id']}, {clean_sql_value(row['country_name'])});\n")
+                f.write(f"INSERT INTO PLAYERS (player_name, player_passwd, pj_id, country_name) VALUES ({clean_sql_value(row['player_name'])}, '12ab', {row['pj_id']}, {clean_sql_value(row['country_name'])});\n")
 
             # --- 2. PJ ---
             f.write("\n-- Inserciones para PJ\n")
