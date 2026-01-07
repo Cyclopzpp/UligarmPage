@@ -1,6 +1,7 @@
 CREATE TABLE PLAYERS (
 
     player_name VARCHAR(100) NOT NULL,
+    player_passwd VARCHAR(20) NOT NULL,
     pj_id INT NOT NULL,
     country_name VARCHAR(30) NOT NULL,
     PRIMARY KEY (player_name, pj_id)

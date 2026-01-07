@@ -2,17 +2,17 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- Inserciones para PLAYERS
-INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ('AntonioE', 1, 'Alta del Este');
-INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ('BastianP', 2, 'Alta del Este');
-INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ('CristobalJ', 3, 'Alta del Este');
-INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ('JavieraP', 4, 'Alta del Este');
-INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ('MauricioB', 5, 'Alta del Este');
-INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ('CamilaP', 6, 'Pir');
-INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ('CarlaB', 7, 'Pir');
-INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ('RaquelA', 8, 'Pir');
-INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ('FabianG', 9, 'Mezonia');
-INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ('FernandaH', 10, 'Mezonia');
-INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ('PalomaO', 11, 'Mezonia');
+INSERT INTO PLAYERS (player_name, player_passwd, pj_id, country_name) VALUES ('AntonioE', '12ab', 1, 'Alta del Este');
+INSERT INTO PLAYERS (player_name, player_passwd, pj_id, country_name) VALUES ('BastianP', '12ab', 2, 'Alta del Este');
+INSERT INTO PLAYERS (player_name, player_passwd, pj_id, country_name) VALUES ('CristobalJ', '12ab', 3, 'Alta del Este');
+INSERT INTO PLAYERS (player_name, player_passwd, pj_id, country_name) VALUES ('JavieraP', '12ab', 4, 'Alta del Este');
+INSERT INTO PLAYERS (player_name, player_passwd, pj_id, country_name) VALUES ('MauricioB', '12ab', 5, 'Alta del Este');
+INSERT INTO PLAYERS (player_name, player_passwd, pj_id, country_name) VALUES ('CamilaP', '12ab', 6, 'Pir');
+INSERT INTO PLAYERS (player_name, player_passwd, pj_id, country_name) VALUES ('CarlaB', '12ab', 7, 'Pir');
+INSERT INTO PLAYERS (player_name, player_passwd, pj_id, country_name) VALUES ('RaquelA', '12ab', 8, 'Pir');
+INSERT INTO PLAYERS (player_name, player_passwd, pj_id, country_name) VALUES ('FabianG', '12ab', 9, 'Mezonia');
+INSERT INTO PLAYERS (player_name, player_passwd, pj_id, country_name) VALUES ('FernandaH', '12ab', 10, 'Mezonia');
+INSERT INTO PLAYERS (player_name, player_passwd, pj_id, country_name) VALUES ('PalomaO', '12ab', 11, 'Mezonia');
 
 -- Inserciones para PJ
 INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('AntonioE', 1, 'Ibro Hamok', 'M', 1, 0, 'Humano', 'Brujo');
