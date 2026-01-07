@@ -1,4 +1,4 @@
--- Script de Importación generado automáticamente
+-- Script de Importación Optimizado
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- Inserciones para PLAYERS
@@ -15,17 +15,17 @@ INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ('FernandaH', 10, 
 INSERT INTO PLAYERS (player_name, pj_id, country_name) VALUES ('PalomaO', 11, 'Mezonia');
 
 -- Inserciones para PJ
-INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('AntonioE', 1, 'Ibro Hamok', 'M', 1.0, 0.0, 'Humano', 'Brujo');
-INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('BastianP', 2, 'Raychin Gueña', 'M', 1.0, 0.0, 'Minotauro', 'Barbaro');
-INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('CristobalJ', 3, 'Sento Hasegawa', 'M', 1.0, 0.0, 'Tieffling', 'Paladin');
-INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('JavieraP', 4, NULL, 'F', 1.0, 0.0, 'Mediano', 'Monje');
-INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('MauricioB', 5, 'Lucanar Tarknus', 'M', 1.0, 0.0, 'Humano+', 'Guerrero');
-INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('CamilaP', 6, 'Krivna Jeryn', 'F', 1.0, 0.0, 'Draconido', 'Guerrero');
-INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('CarlaB', 7, NULL, 'F', 1.0, 0.0, 'Draconido', 'Hechicero');
-INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('RaquelA', 8, NULL, 'F', 1.0, 0.0, 'Elfo del Bosque', 'Bardo');
-INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('FabianG', 9, 'Vexillum Viride', 'M', 1.0, 0.0, 'Humano', 'Picaro');
-INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('FernandaH', 10, NULL, 'F', 1.0, 0.0, 'Elfo', 'Cleriego');
-INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('PalomaO', 11, NULL, 'F', 1.0, 0.0, 'Drow', 'Hechicero');
+INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('AntonioE', 1, 'Ibro Hamok', 'M', 1, 0, 'Humano', 'Brujo');
+INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('BastianP', 2, 'Raychin Gueña', 'M', 1, 0, 'Minotauro', 'Barbaro');
+INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('CristobalJ', 3, 'Sento Hasegawa', 'M', 1, 0, 'Tieffling', 'Paladin');
+INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('JavieraP', 4, NULL, 'F', 1, 0, 'Mediano', 'Monje');
+INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('MauricioB', 5, 'Lucanar Tarknus', 'M', 1, 0, 'Humano+', 'Guerrero');
+INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('CamilaP', 6, 'Krivna Jeryn', 'F', 1, 0, 'Draconido', 'Guerrero');
+INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('CarlaB', 7, NULL, 'F', 1, 0, 'Draconido', 'Hechicero');
+INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('RaquelA', 8, NULL, 'F', 1, 0, 'Elfo del Bosque', 'Bardo');
+INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('FabianG', 9, 'Vexillum Viride', 'M', 1, 0, 'Humano', 'Picaro');
+INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('FernandaH', 10, NULL, 'F', 1, 0, 'Elfo', 'Cleriego');
+INSERT INTO PJ (player_name, pj_id, pj_name, pj_genre, pj_level, pj_experience, pj_race, pj_class) VALUES ('PalomaO', 11, NULL, 'F', 1, 0, 'Drow', 'Hechicero');
 
 -- Inserciones para SPA
 INSERT INTO SPA (player_name, pj_id, ability_cant, special_ability_name, special_ability_description) VALUES ('AntonioE', 1, 1, 'Swap', 'Realiza un cambio de almas entre el usuario y su contratante que dura 1 minuto (fuera de combate) o 2 turnos (dentro de combate). El alma del usuario vuelve una vez pasado el tiempo, todo el daño recibido es compartido. Si el contratante es derrotado antes de que se acabe el tiempo, el usuario vuelve sin rasjuños.');
@@ -38,16 +38,16 @@ INSERT INTO SPA (player_name, pj_id, ability_cant, special_ability_name, special
 INSERT INTO SPA (player_name, pj_id, ability_cant, special_ability_name, special_ability_description) VALUES ('FabianG', 9, 2, 'Sombras', 'El usuario puede viajar mediante las sombras (hasta 25 metros de distancia), recibiendo 1D4 de daño mediante un chance, calculado como "1/2^(8-n)", siendo n el numero de veces que se usa la habilidad antes de un descanso largo. ');
 
 -- Inserciones para STATS
-INSERT INTO STATS (player_name, pj_id, strength, strength_mod, dexterity, dexterity_mod, constitution, constitution_mod, intelligence, intelligence_mod, wisdom, wisdom_mod, charisma, charisma_mod) VALUES ('AntonioE', 1, 5, -3, 12, 1, 13, 1, 10, 0, 13, 1, 15, 2);
-INSERT INTO STATS (player_name, pj_id, strength, strength_mod, dexterity, dexterity_mod, constitution, constitution_mod, intelligence, intelligence_mod, wisdom, wisdom_mod, charisma, charisma_mod) VALUES ('BastianP', 2, 14, 2, 10, 0, 15, 2, 12, 1, 7, -2, 14, 2);
-INSERT INTO STATS (player_name, pj_id, strength, strength_mod, dexterity, dexterity_mod, constitution, constitution_mod, intelligence, intelligence_mod, wisdom, wisdom_mod, charisma, charisma_mod) VALUES ('CristobalJ', 3, 9, -1, 15, 2, 18, 4, 5, -3, 15, 2, 11, 0);
-INSERT INTO STATS (player_name, pj_id, strength, strength_mod, dexterity, dexterity_mod, constitution, constitution_mod, intelligence, intelligence_mod, wisdom, wisdom_mod, charisma, charisma_mod) VALUES ('JavieraP', 4, 10, 0, 16, 3, 13, 1, 7, -2, 15, 2, 9, -1);
-INSERT INTO STATS (player_name, pj_id, strength, strength_mod, dexterity, dexterity_mod, constitution, constitution_mod, intelligence, intelligence_mod, wisdom, wisdom_mod, charisma, charisma_mod) VALUES ('MauricioB', 5, 11, 0, 13, 1, 12, 1, 14, 2, 11, 0, 15, 2);
-INSERT INTO STATS (player_name, pj_id, strength, strength_mod, dexterity, dexterity_mod, constitution, constitution_mod, intelligence, intelligence_mod, wisdom, wisdom_mod, charisma, charisma_mod) VALUES ('CamilaP', 6, 9, -1, 13, 1, 13, 1, 11, 0, 12, 1, 16, 3);
-INSERT INTO STATS (player_name, pj_id, strength, strength_mod, dexterity, dexterity_mod, constitution, constitution_mod, intelligence, intelligence_mod, wisdom, wisdom_mod, charisma, charisma_mod) VALUES ('CarlaB', 7, 14, 2, 14, 2, 14, 2, 9, -1, 8, -1, 8, -1);
-INSERT INTO STATS (player_name, pj_id, strength, strength_mod, dexterity, dexterity_mod, constitution, constitution_mod, intelligence, intelligence_mod, wisdom, wisdom_mod, charisma, charisma_mod) VALUES ('RaquelA', 8, 10, 0, 16, 3, 14, 2, 9, -1, 13, 1, 16, 3);
-INSERT INTO STATS (player_name, pj_id, strength, strength_mod, dexterity, dexterity_mod, constitution, constitution_mod, intelligence, intelligence_mod, wisdom, wisdom_mod, charisma, charisma_mod) VALUES ('FabianG', 9, 9, -1, 18, 4, 12, 1, 15, 2, 13, 1, 15, 2);
-INSERT INTO STATS (player_name, pj_id, strength, strength_mod, dexterity, dexterity_mod, constitution, constitution_mod, intelligence, intelligence_mod, wisdom, wisdom_mod, charisma, charisma_mod) VALUES ('FernandaH', 10, 12, 1, 11, 0, 12, 1, 6, -2, 17, 3, 10, 0);
-INSERT INTO STATS (player_name, pj_id, strength, strength_mod, dexterity, dexterity_mod, constitution, constitution_mod, intelligence, intelligence_mod, wisdom, wisdom_mod, charisma, charisma_mod) VALUES ('PalomaO', 11, 9, -1, 14, 2, 14, 2, 10, 0, 6, -2, 16, 3);
+INSERT INTO STATS VALUES ('AntonioE', 1, 5, -3, 12, 1, 13, 1, 10, 0, 13, 1, 15, 2);
+INSERT INTO STATS VALUES ('BastianP', 2, 14, 2, 10, 0, 15, 2, 12, 1, 7, -2, 14, 2);
+INSERT INTO STATS VALUES ('CristobalJ', 3, 9, -1, 15, 2, 18, 4, 5, -3, 15, 2, 11, 0);
+INSERT INTO STATS VALUES ('JavieraP', 4, 10, 0, 16, 3, 13, 1, 7, -2, 15, 2, 9, -1);
+INSERT INTO STATS VALUES ('MauricioB', 5, 11, 0, 13, 1, 12, 1, 14, 2, 11, 0, 15, 2);
+INSERT INTO STATS VALUES ('CamilaP', 6, 9, -1, 13, 1, 13, 1, 11, 0, 12, 1, 16, 3);
+INSERT INTO STATS VALUES ('CarlaB', 7, 14, 2, 14, 2, 14, 2, 9, -1, 8, -1, 8, -1);
+INSERT INTO STATS VALUES ('RaquelA', 8, 10, 0, 16, 3, 14, 2, 9, -1, 13, 1, 16, 3);
+INSERT INTO STATS VALUES ('FabianG', 9, 9, -1, 18, 4, 12, 1, 15, 2, 13, 1, 15, 2);
+INSERT INTO STATS VALUES ('FernandaH', 10, 12, 1, 11, 0, 12, 1, 6, -2, 17, 3, 10, 0);
+INSERT INTO STATS VALUES ('PalomaO', 11, 9, -1, 14, 2, 14, 2, 10, 0, 6, -2, 16, 3);
 
 SET FOREIGN_KEY_CHECKS = 1;
