@@ -10,16 +10,27 @@
     $user = $_SESSION['usuario'];
     $pj_id = $_SESSION['pj_id'];
 
-    $sql = "SELECT p.*, s.*, a.special_ability_name, a.special_ability_description 
+    $sql = "SELECT 
+            p.*, 
+            s.*, 
+            pl.country_name,
+            c.description as country_desc, 
+            c.climate, 
+            c.ruler,
+            a.special_ability_name, 
+            a.special_ability_description
             FROM PJ p
             JOIN STATS s ON p.player_name = s.player_name AND p.pj_id = s.pj_id
+            JOIN PLAYERS pl ON p.player_name = pl.player_name AND p.pj_id = pl.pj_id
             LEFT JOIN SPA a ON p.player_name = a.player_name AND p.pj_id = a.pj_id
+            LEFT JOIN COUNTRIES c ON pl.country_name = c.country_name
             WHERE p.player_name = ? AND p.pj_id = ?";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("si", $user, $pj_id);
     $stmt->execute();
     $datos = $stmt->get_result()->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
