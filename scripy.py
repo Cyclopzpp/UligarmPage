@@ -3,7 +3,7 @@ import numpy as np
 
 # Configuración de archivos
 FILE_PATH = 'Uligarm_imports.xlsx'
-OUTPUT_SQL = 'Page_SQL\IMPORT.sql'
+OUTPUT_SQL = '.\Page_SQL\IMPORT.sql'
 
 def clean_sql_value(val, is_string=True):
     """
