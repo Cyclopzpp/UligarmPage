@@ -68,3 +68,16 @@ CREATE TABLE STATS (
     FOREIGN KEY (player_name, pj_id) REFERENCES PJ(player_name, pj_id)
 
 );
+
+CREATE TABLE COUNTRIES (
+    country_name VARCHAR(30) PRIMARY KEY,
+    description TEXT,
+    climate VARCHAR(50),
+    ruler VARCHAR(100),
+    image_url VARCHAR(255)
+);
+
+INSERT INTO COUNTRIES (country_name, description, climate, ruler) VALUES 
+('Alta del Este', 'Una región montañosa conocida por sus grandes ciudadelas y guerreros valientes.', 'Frío/Montañoso', 'Rey Aldric III'),
+('Pir', 'Archipiélago tropical famoso por sus rutas comerciales y gremios de navegantes.', 'Tropical', 'Consejo de Capitanes'),
+('Mezonia', 'Extensas llanuras y bosques densos donde la magia fluye de forma natural.', 'Templado', 'La Gran Druida');
