@@ -1,4 +1,4 @@
-// 📄 app.js - Lógica principal
+// 📄 app.js - Lógica principal CORREGIDA
 class UligarmApp {
     constructor() {
         // Cargar datos de localStorage o usar ejemplos

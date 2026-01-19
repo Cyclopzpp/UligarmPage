@@ -1,4 +1,4 @@
-// 📄 data.js - Base de datos simulada
+// 📄 data.js - Base de datos simulada CORREGIDA
 const paises = [
     { 
         nombre: 'Alta del Este', 
@@ -36,6 +36,18 @@ const usuariosEjemplo = [
             pj_class: 'Brujo'
         },
         stats: {
+            strength: 5,
+            strength_mod: -3,
+            dexterity: 12,
+            dexterity_mod: 1,
+            constitution: 13,
+            constitution_mod: 1,
+            intelligence: 10,
+            intelligence_mod: 0,
+            wisdom: 13,
+            wisdom_mod: 1,
+            charisma: 15,
+            charisma_mod: 2
         },
         habilidades: [
             {
@@ -47,7 +59,7 @@ const usuariosEjemplo = [
     {
         player_name: 'BastianP',
         player_passwd: '12ab',
-        pj_id: 2,
+        pj_id: 1,
         country_name: 'Alta del Este',
         pj: {
             pj_name: 'Raychin Gueña',
@@ -58,6 +70,18 @@ const usuariosEjemplo = [
             pj_class: 'Barbaro'
         },
         stats: {
+            strength: 14,
+            strength_mod: 2,
+            dexterity: 10,
+            dexterity_mod: 0,
+            constitution: 15,
+            constitution_mod: 2,
+            intelligence: 12,
+            intelligence_mod: 1,
+            wisdom: 7,
+            wisdom_mod: -2,
+            charisma: 14,
+            charisma_mod: 2
         },
         habilidades: [
             {
@@ -69,7 +93,7 @@ const usuariosEjemplo = [
     {
         player_name: 'CristobalJ',
         player_passwd: '12ab',
-        pj_id: 3,
+        pj_id: 1,
         country_name: 'Alta del Este',
         pj: {
             pj_name: 'Sento Hasegawa',
@@ -80,6 +104,18 @@ const usuariosEjemplo = [
             pj_class: 'Paladin'
         },
         stats: {
+            strength: 9,
+            strength_mod: -1,
+            dexterity: 15,
+            dexterity_mod: 2,
+            constitution: 18,
+            constitution_mod: 4,
+            intelligence: 5,
+            intelligence_mod: -3,
+            wisdom: 15,
+            wisdom_mod: 2,
+            charisma: 11,
+            charisma_mod: 0
         },
         habilidades: [
             {
@@ -91,7 +127,7 @@ const usuariosEjemplo = [
     {
         player_name: 'JavieraP',
         player_passwd: '12ab',
-        pj_id: 4,
+        pj_id: 1,
         country_name: 'Alta del Este',
         pj: {
             pj_name: 'Phoebe Nix',
@@ -102,6 +138,18 @@ const usuariosEjemplo = [
             pj_class: 'Monje'
         },
         stats: {
+            strength: 10,
+            strength_mod: 0,
+            dexterity: 16,
+            dexterity_mod: 3,
+            constitution: 13,
+            constitution_mod: 1,
+            intelligence: 7,
+            intelligence_mod: -2,
+            wisdom: 15,
+            wisdom_mod: 2,
+            charisma: 9,
+            charisma_mod: -1
         },
         habilidades: [
             {
@@ -113,7 +161,7 @@ const usuariosEjemplo = [
     {
         player_name: 'MauricioB',
         player_passwd: '12ab',
-        pj_id: 5,
+        pj_id: 1,
         country_name: 'Alta del Este',
         pj: {
             pj_name: 'Lucanar Tarknus',
@@ -124,6 +172,18 @@ const usuariosEjemplo = [
             pj_class: 'Guerrero'
         },
         stats: {
+            strength: 11,
+            strength_mod: 0,
+            dexterity: 13,
+            dexterity_mod: 1,
+            constitution: 12,
+            constitution_mod: 1,
+            intelligence: 14,
+            intelligence_mod: 2,
+            wisdom: 11,
+            wisdom_mod: 0,
+            charisma: 15,
+            charisma_mod: 2
         },
         habilidades: [
             {
@@ -135,7 +195,7 @@ const usuariosEjemplo = [
     {
         player_name: 'CamilaP',
         player_passwd: '12ab',
-        pj_id: 6,
+        pj_id: 1,
         country_name: 'Pir',
         pj: {
             pj_name: 'Krivna Jeryn',
@@ -146,6 +206,18 @@ const usuariosEjemplo = [
             pj_class: 'Guerrero'
         },
         stats: {
+            strength: 9,
+            strength_mod: -1,
+            dexterity: 13,
+            dexterity_mod: 1,
+            constitution: 13,
+            constitution_mod: 1,
+            intelligence: 11,
+            intelligence_mod: 0,
+            wisdom: 12,
+            wisdom_mod: 1,
+            charisma: 16,
+            charisma_mod: 3
         },
         habilidades: [
             {
@@ -157,7 +229,7 @@ const usuariosEjemplo = [
     {
         player_name: 'CarlaB',
         player_passwd: '12ab',
-        pj_id: 7,
+        pj_id: 1,
         country_name: 'Pir',
         pj: {
             pj_name: 'Latte Ectrie',
@@ -168,6 +240,18 @@ const usuariosEjemplo = [
             pj_class: 'Hechicero'
         },
         stats: {
+            strength: 14,
+            strength_mod: 2,
+            dexterity: 14,
+            dexterity_mod: 2,
+            constitution: 14,
+            constitution_mod: 2,
+            intelligence: 9,
+            intelligence_mod: -1,
+            wisdom: 8,
+            wisdom_mod: -1,
+            charisma: 8,
+            charisma_mod: -1
         },
         habilidades: [
             {
@@ -179,7 +263,7 @@ const usuariosEjemplo = [
     {
         player_name: 'RaquelA',
         player_passwd: '12ab',
-        pj_id: 8,
+        pj_id: 1,
         country_name: 'Pir',
         pj: {
             pj_name: 'Sira Strand',
@@ -190,6 +274,18 @@ const usuariosEjemplo = [
             pj_class: 'Bardo'
         },
         stats: {
+            strength: 10,
+            strength_mod: 0,
+            dexterity: 16,
+            dexterity_mod: 3,
+            constitution: 14,
+            constitution_mod: 2,
+            intelligence: 9,
+            intelligence_mod: -1,
+            wisdom: 13,
+            wisdom_mod: 1,
+            charisma: 16,
+            charisma_mod: 3
         },
         habilidades: [
             {
@@ -201,7 +297,7 @@ const usuariosEjemplo = [
     {
         player_name: 'FabianG',
         player_passwd: '12ab',
-        pj_id: 9,
+        pj_id: 1,
         country_name: 'Mezonia',
         pj: {
             pj_name: 'Vexillum Viride',
@@ -212,6 +308,18 @@ const usuariosEjemplo = [
             pj_class: 'Picaro'
         },
         stats: {
+            strength: 9,
+            strength_mod: -1,
+            dexterity: 18,
+            dexterity_mod: 4,
+            constitution: 12,
+            constitution_mod: 1,
+            intelligence: 15,
+            intelligence_mod: 2,
+            wisdom: 13,
+            wisdom_mod: 1,
+            charisma: 15,
+            charisma_mod: 2
         },
         habilidades: [
             {
@@ -227,25 +335,59 @@ const usuariosEjemplo = [
     {
         player_name: 'FernandaH',
         player_passwd: '12ab',
-        pj_id: 10,
+        pj_id: 1,
         country_name: 'Mezonia',
         pj: {
+            pj_name: null,
+            pj_genre: 'F',
+            pj_level: 1,
+            pj_experience: 0,
+            pj_race: 'Elfo',
+            pj_class: 'Clerigo'
         },
         stats: {
+            strength: 12,
+            strength_mod: 1,
+            dexterity: 11,
+            dexterity_mod: 0,
+            constitution: 12,
+            constitution_mod: 1,
+            intelligence: 6,
+            intelligence_mod: -2,
+            wisdom: 17,
+            wisdom_mod: 3,
+            charisma: 10,
+            charisma_mod: 0
         },
-        habilidades: [
-        ]
+        habilidades: []
     },
     {
         player_name: 'PalomaO',
         player_passwd: '12ab',
-        pj_id: 11,
+        pj_id: 1,
         country_name: 'Mezonia',
         pj: {
+            pj_name: null,
+            pj_genre: 'F',
+            pj_level: 1,
+            pj_experience: 0,
+            pj_race: 'Drow',
+            pj_class: 'Hechicero'
         },
         stats: {
+            strength: 9,
+            strength_mod: -1,
+            dexterity: 14,
+            dexterity_mod: 2,
+            constitution: 14,
+            constitution_mod: 2,
+            intelligence: 10,
+            intelligence_mod: 0,
+            wisdom: 6,
+            wisdom_mod: -2,
+            charisma: 16,
+            charisma_mod: 3
         },
-        habilidades: [
-        ]
+        habilidades: []
     }
 ];
