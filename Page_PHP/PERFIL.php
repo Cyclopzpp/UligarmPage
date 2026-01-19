@@ -11,20 +11,21 @@
     $pj_id = $_SESSION['pj_id'];
 
     $sql = "SELECT 
-            p.*, 
-            s.*, 
-            pl.country_name,
-            c.description as country_desc, 
-            c.climate, 
-            c.ruler,
-            a.special_ability_name, 
-            a.special_ability_description
-            FROM PJ p
-            JOIN STATS s ON p.player_name = s.player_name AND p.pj_id = s.pj_id
-            JOIN PLAYERS pl ON p.player_name = pl.player_name AND p.pj_id = pl.pj_id
-            LEFT JOIN SPA a ON p.player_name = a.player_name AND p.pj_id = a.pj_id
-            LEFT JOIN COUNTRIES c ON pl.country_name = c.country_name
-            WHERE p.player_name = ? AND p.pj_id = ?";
+        p.*, 
+        s.*, 
+        pl.country_name,
+        c.description as country_desc, 
+        c.climate, 
+        c.ruler,
+        GROUP_CONCAT(a.special_ability_name SEPARATOR '|') as names_bundle, 
+        GROUP_CONCAT(a.special_ability_description SEPARATOR '|') as desc_bundle
+        FROM PJ p
+        JOIN STATS s ON p.player_name = s.player_name AND p.pj_id = s.pj_id
+        JOIN PLAYERS pl ON p.player_name = pl.player_name AND p.pj_id = pl.pj_id
+        LEFT JOIN SPA a ON p.player_name = a.player_name AND p.pj_id = a.pj_id
+        LEFT JOIN COUNTRIES c ON pl.country_name = c.country_name
+        WHERE p.player_name = ? AND p.pj_id = ?
+        GROUP BY p.player_name, p.pj_id";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("si", $user, $pj_id);
@@ -109,6 +110,13 @@
             </div>
 
             <div class="ability-section" style="border-left: 4px solid #2ecc71;">
+                <?php if (!empty($datos['special_ability_name'])): ?>
+                    <div class="ability-section">
+                        <h3>Habilidad Especial</h3>
+                        <p><strong><?php echo htmlspecialchars($datos['special_ability_name']); ?></strong></p>
+                        <small><?php echo htmlspecialchars($datos['special_ability_description']); ?></small>
+                    </div>
+                <?php endif; ?>
                 <h3>📍 Ubicación: <?php echo htmlspecialchars($datos['country_name']); ?></h3>
                 <p><strong>Gobernante:</strong> <?php echo htmlspecialchars($datos['ruler']); ?></p>
                 <p><strong>Clima:</strong> <?php echo htmlspecialchars($datos['climate']); ?></p>
