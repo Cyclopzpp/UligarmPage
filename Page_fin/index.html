@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bienvenido a Uligarm!</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            .login-container {
+                background-color: white;
+                padding: 2rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                width: 90%;
+                max-width: 300px;
+            }
+
+            .register-link {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                background-color: #28a745;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 4px;
+                margin-top: 10px;
+                transition: background-color 0.3s;
+            }
+
+            .register-link:hover {
+                background-color: #218838;
+            }
+
+            #errorMsg {
+                color: #dc3545;
+                font-size: 14px;
+                margin: 10px 0;
+                min-height: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="login-container">
+            <h2>¡Bienvenido a Uligarm!</h2>
+            <h3>¡Ingresa tus datos!</h3>
+            
+            <div id="errorMsg"></div>
+            
+            <form id="loginForm">
+                <input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <button type="submit">¡Ingresar!</button>
+            </form>
+
+            <a href="REGISTER.html" class="register-link">
+                Crear nueva cuenta
+            </a>
+            
+            <div style="margin-top: 15px; font-size: 12px; color: #666;">
+                <p>Usuarios de prueba:</p>
+                <p><strong>Usuario:</strong> AntonioE | <strong>Contraseña:</strong> 123456</p>
+            </div>
+        </div>
+
+        <script src="data.js"></script>
+        <script src="app.js"></script>
+        <script>
+            // Inicializar aplicación
+            const app = new UligarmApp();
+            
+            // Redirigir si ya está logueado
+            if (app.sesionActiva) {
+                window.location.href = 'PERFIL.html';
+            }
+            
+            // Manejar login
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const usuario = document.getElementById('usuario').value.trim();
+                const password = document.getElementById('password').value;
+                const errorMsg = document.getElementById('errorMsg');
+                
+                errorMsg.textContent = '';
+                
+                if (!usuario || !password) {
+                    errorMsg.textContent = 'Por favor completa todos los campos';
+                    return;
+                }
+                
+                const resultado = app.login(usuario, password);
+                
+                if (resultado.success) {
+                    window.location.href = 'PERFIL.html';
+                } else {
+                    errorMsg.textContent = resultado.message;
+                }
+            });
+        </script>
+    </body>
+</html>

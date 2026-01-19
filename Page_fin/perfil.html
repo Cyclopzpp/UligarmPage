@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Perfil - Uligarm</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            /* Estilos específicos del perfil */
+            .ficha {
+                background: #2c3e50;
+                color: white;
+                text-align: left;
+            }
+            
+            hr {
+                border: none;
+                height: 1px;
+                background: rgba(255,255,255,0.1);
+                margin: 20px 0;
+            }
+            
+            .habilidad-item {
+                margin-bottom: 15px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .habilidad-item:last-child {
+                border-bottom: none;
+            }
+            
+            .nombre-form {
+                display: flex;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            
+            .nombre-form input {
+                flex: 1;
+                background: rgba(255,255,255,0.1);
+                border: 1px solid #34495e;
+                color: white;
+            }
+            
+            .nombre-form input::placeholder {
+                color: rgba(255,255,255,0.5);
+            }
+            
+            .nombre-form button {
+                width: auto;
+                padding: 10px 20px;
+                background-color: #f1c40f;
+                color: #2c3e50;
+            }
+            
+            .nombre-form button:hover {
+                background-color: #d4ac0d;
+            }
+            
+            .pais-info {
+                background: rgba(52, 73, 94, 0.5);
+                padding: 15px;
+                border-radius: 8px;
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="ficha" id="perfilContainer">
+            <p>Cargando perfil...</p>
+        </div>
+
+        <script src="data.js"></script>
+        <script src="app.js"></script>
+        <script>
+            // Inicializar aplicación
+            const app = new UligarmApp();
+            
+            // Verificar sesión
+            if (!app.verificarSesion()) {
+                alert('Por favor inicia sesión primero');
+                window.location.href = 'index.html';
+            }
+            
+            // Obtener datos del usuario
+            const usuario = app.obtenerUsuarioActual();
+            const pais = app.obtenerPais(usuario.country_name);
+            
+            function renderPerfil() {
+                const container = document.getElementById('perfilContainer');
+                
+                let html = '';
+                
+                // Formulario para nombre si es null
+                if (!usuario.pj.pj_name) {
+                    html += `
+                        <div class="ability-section">
+                            <h3>✨ Nombre tu personaje</h3>
+                            <p>Tu personaje aún no tiene nombre oficial.</p>
+                            <form class="nombre-form" id="nombreForm">
+                                <input type="text" id="nuevoNombre" placeholder="Ej: Arathorn, Legolas, Gandalf..." required>
+                                <button type="submit">Guardar</button>
+                            </form>
+                        </div>
+                    `;
+                }
+                
+                // Información principal
+                html += `
+                    <h1>${usuario.pj.pj_name || 'Héroe Sin Nombre'}</h1>
+                    <p><strong>Raza:</strong> ${usuario.pj.pj_race} | <strong>Clase:</strong> ${usuario.pj.pj_class}</p>
+                    <p><strong>Nivel:</strong> ${usuario.pj.pj_level} | <strong>Experiencia:</strong> ${usuario.pj.pj_experience} XP</p>
+                    <p><strong>Género:</strong> ${usuario.pj.pj_genre === 'M' ? 'Masculino' : 'Femenino'}</p>
+                    
+                    <hr>
+                    
+                    <h2>Estadísticas Base</h2>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <strong>Fuerza:</strong> 
+                            <span class="stat-val">${usuario.stats.strength} (${usuario.stats.strength_mod >= 0 ? '+' : ''}${usuario.stats.strength_mod})</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>Destreza:</strong> 
+                            <span class="stat-val">${usuario.stats.dexterity} (${usuario.stats.dexterity_mod >= 0 ? '+' : ''}${usuario.stats.dexterity_mod})</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>Constitución:</strong> 
+                            <span class="stat-val">${usuario.stats.constitution} (${usuario.stats.constitution_mod >= 0 ? '+' : ''}${usuario.stats.constitution_mod})</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>Inteligencia:</strong> 
+                            <span class="stat-val">${usuario.stats.intelligence} (${usuario.stats.intelligence_mod >= 0 ? '+' : ''}${usuario.stats.intelligence_mod})</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>Sabiduría:</strong> 
+                            <span class="stat-val">${usuario.stats.wisdom} (${usuario.stats.wisdom_mod >= 0 ? '+' : ''}${usuario.stats.wisdom_mod})</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>Carisma:</strong> 
+                            <span class="stat-val">${usuario.stats.charisma} (${usuario.stats.charisma_mod >= 0 ? '+' : ''}${usuario.stats.charisma_mod})</span>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="ability-section">
+                        <h3>🌍 País de Origen</h3>
+                        <div class="pais-info">
+                            <h4>${pais.nombre}</h4>
+                            <p>${pais.descripcion}</p>
+                            <p><strong>Clima:</strong> ${pais.clima}</p>
+                            <p><strong>Gobernante:</strong> ${pais.gobernante}</p>
+                        </div>
+                    </div>
+                `;
+                
+                // Habilidades
+                if (usuario.habilidades && usuario.habilidades.length > 0) {
+                    html += `
+                        <div class="ability-section">
+                            <h3>✨ Habilidades Especiales</h3>
+                    `;
+                    
+                    usuario.habilidades.forEach(habilidad => {
+                        html += `
+                            <div class="habilidad-item">
+                                <h4>${habilidad.special_ability_name}</h4>
+                                <p><small>${habilidad.special_ability_description}</small></p>
+                            </div>
+                        `;
+                    });
+                    
+                    html += `</div>`;
+                } else {
+                    html += `
+                        <div class="ability-section">
+                            <h3>✨ Habilidades Especiales</h3>
+                            <p><small>No hay habilidades disponibles aún.</small></p>
+                        </div>
+                    `;
+                }
+                
+                // Botones de acción
+                html += `
+                    <hr>
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <a href="index.html" class="btn" style="flex: 1;">Inicio</a>
+                        <a href="LOGOUT.html" class="logout" style="flex: 1; text-align: center;">Cerrar Sesión</a>
+                    </div>
+                `;
+                
+                container.innerHTML = html;
+                
+                // Agregar evento al formulario de nombre si existe
+                const nombreForm = document.getElementById('nombreForm');
+                if (nombreForm) {
+                    nombreForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        const nuevoNombre = document.getElementById('nuevoNombre').value.trim();
+                        
+                        if (nuevoNombre) {
+                            if (app.actualizarNombrePj(nuevoNombre)) {
+                                // Actualizar objeto local
+                                usuario.pj.pj_name = nuevoNombre;
+                                // Volver a renderizar
+                                renderPerfil();
+                            } else {
+                                alert('Error al actualizar el nombre');
+                            }
+                        } else {
+                            alert('Por favor ingresa un nombre válido');
+                        }
+                    });
+                }
+            }
+            
+            // Renderizar perfil
+            renderPerfil();
+        </script>
+    </body>
+</html>

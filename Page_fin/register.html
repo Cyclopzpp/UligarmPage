@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registro en Uligarm</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            .register-container {
+                max-width: 400px;
+            }
+            
+            .login-link {
+                display: block;
+                margin-top: 15px;
+                color: #007bff;
+                text-decoration: none;
+                text-align: center;
+            }
+            
+            .login-link:hover {
+                text-decoration: underline;
+            }
+            
+            .password-requirements {
+                font-size: 12px;
+                color: #666;
+                margin-top: 5px;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="register-container">
+            <h2>¡Regístrate en Uligarm!</h2>
+            
+            <div id="errorMsg" class="error" style="display: none;"></div>
+            <div id="successMsg" class="success-message" style="display: none;"></div>
+            
+            <form id="registerForm">
+                <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario" required>
+                
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <div class="password-requirements">
+                    Mínimo 6 caracteres
+                </div>
+                
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmar contraseña" required>
+                
+                <select id="country" name="country" required>
+                    <option value="" disabled selected>Selecciona tu país</option>
+                    <option value="Alta del Este">Alta del Este</option>
+                    <option value="Pir">Pir</option>
+                    <option value="Mezonia">Mezonia</option>
+                </select>
+                
+                <button type="submit" class="success">Crear Cuenta</button>
+            </form>
+            
+            <a href="index.html" class="login-link">¿Ya tienes cuenta? Inicia sesión aquí</a>
+            
+            <div style="margin-top: 20px; font-size: 12px; color: #666; text-align: left;">
+                <p><strong>Nota:</strong> Los datos se guardan localmente en tu navegador.</p>
+                <p>Esto significa que:</p>
+                <ul style="margin-left: 20px;">
+                    <li>Tus datos no se comparten con servidores externos</li>
+                    <li>Solo podrás acceder desde este navegador</li>
+                    <li>Si borras los datos del navegador, perderás tu cuenta</li>
+                </ul>
+            </div>
+        </div>
+
+        <script src="data.js"></script>
+        <script src="app.js"></script>
+        <script>
+            // Inicializar aplicación
+            const app = new UligarmApp();
+            
+            // Redirigir si ya está logueado
+            if (app.sesionActiva) {
+                window.location.href = 'PERFIL.html';
+            }
+            
+            // Elementos DOM
+            const form = document.getElementById('registerForm');
+            const errorMsg = document.getElementById('errorMsg');
+            const successMsg = document.getElementById('successMsg');
+            
+            // Validar contraseñas en tiempo real
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirm_password');
+            
+            function validarContrasenas() {
+                if (password.value !== confirmPassword.value) {
+                    confirmPassword.setCustomValidity('Las contraseñas no coinciden');
+                    return false;
+                } else if (password.value.length < 6) {
+                    password.setCustomValidity('La contraseña debe tener al menos 6 caracteres');
+                    return false;
+                } else {
+                    password.setCustomValidity('');
+                    confirmPassword.setCustomValidity('');
+                    return true;
+                }
+            }
+            
+            password.addEventListener('input', validarContrasenas);
+            confirmPassword.addEventListener('input', validarContrasenas);
+            
+            // Manejar registro
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Ocultar mensajes anteriores
+                errorMsg.style.display = 'none';
+                successMsg.style.display = 'none';
+                
+                // Obtener valores
+                const usuario = document.getElementById('usuario').value.trim();
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm_password').value;
+                const country = document.getElementById('country').value;
+                
+                // Validaciones
+                if (!validarContrasenas()) {
+                    errorMsg.textContent = 'Por favor corrige los errores en las contraseñas';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+                
+                if (!usuario) {
+                    errorMsg.textContent = 'Por favor ingresa un nombre de usuario';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+                
+                if (!country) {
+                    errorMsg.textContent = 'Por favor selecciona un país';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+                
+                // Registrar usuario
+                const resultado = app.registrar(usuario, password, country);
+                
+                if (resultado.success) {
+                    successMsg.textContent = `¡Cuenta creada exitosamente! Bienvenido ${usuario}`;
+                    successMsg.style.display = 'block';
+                    
+                    // Redirigir después de 2 segundos
+                    setTimeout(() => {
+                        window.location.href = 'PERFIL.html';
+                    }, 2000);
+                } else {
+                    errorMsg.textContent = resultado.message;
+                    errorMsg.style.display = 'block';
+                }
+            });
+        </script>
+    </body>
+</html>
