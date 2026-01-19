@@ -31,6 +31,8 @@
     $stmt->bind_param("si", $user, $pj_id);
     $stmt->execute();
     $datos = $stmt->get_result()->fetch_assoc();
+    $habilidades_nombres = !empty($datos['names_bundle']) ? explode('|', $datos['names_bundle']) : [];
+    $habilidades_descs = !empty($datos['desc_bundle']) ? explode('|', $datos['desc_bundle']) : [];
 
 ?>
 
@@ -109,18 +111,19 @@
                 <small><?php echo $datos['special_ability_description'] ?? 'No hay descripción disponible.'; ?></small>
             </div>
 
-            <div class="ability-section" style="border-left: 4px solid #2ecc71;">
-                <?php if (!empty($datos['special_ability_name'])): ?>
-                    <div class="ability-section">
-                        <h3>Habilidad Especial</h3>
-                        <p><strong><?php echo htmlspecialchars($datos['special_ability_name']); ?></strong></p>
-                        <small><?php echo htmlspecialchars($datos['special_ability_description']); ?></small>
-                    </div>
+            <div class="ability-section">
+                <h3>Habilidades Especiales</h3>
+                
+                <?php if (empty($habilidades_nombres)): ?>
+                    <p><small>No hay habilidades disponibles.</small></p>
+                <?php else: ?>
+                    <?php foreach ($habilidades_nombres as $index => $nombre): ?>
+                        <div style="margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                            <p><strong><?php echo htmlspecialchars($nombre); ?></strong></p>
+                            <small><?php echo htmlspecialchars($habilidades_descs[$index] ?? ''); ?></small>
+                        </div>
+                    <?php endforeach; ?>
                 <?php endif; ?>
-                <h3>📍 Ubicación: <?php echo htmlspecialchars($datos['country_name']); ?></h3>
-                <p><strong>Gobernante:</strong> <?php echo htmlspecialchars($datos['ruler']); ?></p>
-                <p><strong>Clima:</strong> <?php echo htmlspecialchars($datos['climate']); ?></p>
-                <p style="font-style: italic;">"<?php echo htmlspecialchars($datos['country_desc']); ?>"</p>
             </div>
             
             <a href="logout.php" class="logout">Cerrar Sesión</a>
