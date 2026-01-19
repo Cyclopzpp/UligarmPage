@@ -54,6 +54,7 @@
                 <button type="submit">¡Ingresar!</button>
             </form>
 
+            <!-- ENLACE CORREGIDO: register.html (minúsculas) -->
             <a href="register.html" class="register-link">
                 Crear nueva cuenta
             </a>
@@ -73,7 +74,7 @@
             
             // Redirigir si ya está logueado
             if (app.sesionActiva) {
-                window.location.href = 'PERFIL.html';
+                window.location.href = 'perfil.html';  // ← minúsculas
             }
             
             // Manejar login
@@ -94,7 +95,7 @@
                 const resultado = app.login(usuario, password);
                 
                 if (resultado.success) {
-                    window.location.href = 'PERFIL.html';
+                    window.location.href = 'perfil.html';  // ← minúsculas
                 } else {
                     errorMsg.textContent = resultado.message;
                 }
