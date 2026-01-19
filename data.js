@@ -1,4 +1,3 @@
-// 📄 data.js - Base de datos simulada CORREGIDA
 const paises = [
     { 
         nombre: 'Alta del Este', 
@@ -20,7 +19,7 @@ const paises = [
     }
 ];
 
-// Usuarios de ejemplo (se guardarán en localStorage)
+// Usuarios de ejemplo (con TODAS las estadísticas)
 const usuariosEjemplo = [
     {
         player_name: 'AntonioE',
