@@ -5,7 +5,9 @@ CREATE TABLE PLAYERS (
     pj_id INT NOT NULL,
     country_name VARCHAR(30) NOT NULL,
     PRIMARY KEY (player_name, pj_id)
-
+    ALTER TABLE PLAYERS 
+    MODIFY COLUMN player_passwd VARCHAR(255) NOT NULL;
+    
 );
 
 CREATE TABLE PJ (

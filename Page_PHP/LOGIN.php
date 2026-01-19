@@ -58,6 +58,11 @@
             <input type="password" name="password" placeholder="Contraseña" required>
             <button type="submit">¡Ingresar!</button>
         </form>
+
+        <a href="REGISTER.php" style="display: block; width: 100%; padding: 10px; background-color: #28a745; color: white; text-align: center; text-decoration: none; border-radius: 4px; margin-top: 10px;">
+            Crear nueva cuenta
+        </a>
+        
     </div>
 
 </body>
