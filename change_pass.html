@@ -43,7 +43,6 @@
         <script>
             const app = new UligarmApp();
             
-            // Seguridad: Si no hay sesión, mandar al login
             if (!app.sesionActiva) {
                 window.location.href = 'index.html';
             }
@@ -61,41 +60,37 @@
                 const newPass = document.getElementById('newPass').value;
                 const confirmPass = document.getElementById('confirmPass').value;
 
-                // 1. Validar que las nuevas coincidan
+                // 1. Validaciones básicas
                 if (newPass !== confirmPass) {
                     errorMsg.textContent = 'Las nuevas contraseñas no coinciden';
                     errorMsg.style.display = 'block';
                     return;
                 }
 
-                // 2. Validar longitud
-                if (newPass.length < 6) {
-                    errorMsg.textContent = 'La nueva contraseña debe tener al menos 6 caracteres';
-                    errorMsg.style.display = 'block';
-                    return;
-                }
-
-                // 3. Intentar el cambio
-                // Primero verificamos la actual obteniendo el usuario
-                const usuario = app.obtenerUsuarioActual();
-                if (usuario.player_passwd !== currentPass) {
+                // 2. Verificar contraseña actual y cambiar
+                // Obtenemos los datos frescos del usuario logueado
+                const usuarioActual = app.obtenerUsuarioActual();
+                
+                if (usuarioActual.player_passwd !== currentPass) {
                     errorMsg.textContent = 'La contraseña actual es incorrecta';
                     errorMsg.style.display = 'block';
                     return;
                 }
 
+                // 3. Ejecutar el cambio
                 const exito = app.cambiarContrasena(newPass);
+                
                 if (exito) {
-                    successMsg.textContent = '¡Contraseña actualizada con éxito!';
+                    successMsg.textContent = '¡Contraseña actualizada con éxito en este dispositivo!';
                     successMsg.style.display = 'block';
                     form.reset();
                     
-                    // Redirigir al perfil tras 2 segundos
+                    // Redirigir al perfil tras 2 segundos para que vean el mensaje
                     setTimeout(() => {
                         window.location.href = 'perfil.html';
                     }, 2000);
                 } else {
-                    errorMsg.textContent = 'Error al actualizar la contraseña';
+                    errorMsg.textContent = 'Error al procesar el cambio. Intenta de nuevo.';
                     errorMsg.style.display = 'block';
                 }
             });

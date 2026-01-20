@@ -152,20 +152,22 @@ class UligarmApp {
     }
 
     cambiarContrasena(nuevaPassword) {
-        const user = this.obtenerUsuarioActual();
-        if (user && nuevaPassword.length >= 6) {
-            user.player_passwd = nuevaPassword;
+        const sesion = this.sesionActiva;
+        if (!sesion) return false;
+
+        // 1. Buscar al usuario en la lista actual por su ID único
+        const index = this.usuarios.findIndex(u => u.pj_id === sesion.pj_id);
+
+        if (index !== -1 && nuevaPassword.length >= 4) {
+            // 2. Actualizar la contraseña en el array de la memoria
+            this.usuarios[index].player_passwd = nuevaPassword;
             
-            // Actualizar en el array
-            const index = this.usuarios.findIndex(u => 
-                u.player_name === user.player_name && u.pj_id === user.pj_id
-            );
+            // 3. PERSISTENCIA: Guardar el array completo actualizado en localStorage
+            // Esto convierte a los "usuarios de ejemplo" en "usuarios locales" editables
+            localStorage.setItem('uligarm_usuarios', JSON.stringify(this.usuarios));
             
-            if (index !== -1) {
-                this.usuarios[index] = user;
-                localStorage.setItem('uligarm_usuarios', JSON.stringify(this.usuarios));
-                return true;
-            }
+            console.log("Contraseña actualizada para:", this.usuarios[index].player_name);
+            return true;
         }
         return false;
     }
