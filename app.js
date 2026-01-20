@@ -3,11 +3,17 @@ class UligarmApp {
     constructor() {
         // Cargar datos de localStorage o usar ejemplos
         const usuariosGuardados = localStorage.getItem('uligarm_usuarios');
-        this.usuarios = usuariosGuardados ? JSON.parse(usuariosGuardados) : usuariosEjemplo;
         
-        // Si no había usuarios, guardar los de ejemplo
-        if (!usuariosGuardados) {
-            localStorage.setItem('uligarm_usuarios', JSON.stringify(this.usuarios));
+        if(usuariosGuardados){
+
+            this.usuarios = JSON.parse(usuariosGuardados) ;
+
+        }else{
+
+            this.usuarios = usuariosEjemplo ;
+            localStorage.setItem('uligarm_usuarios', JSON.stringify(this.usuarios)) ;
+            localStorage.setItem('uligarm_paises', JSON.stringify(this.paises)) ;
+
         }
         
         this.sesionActiva = JSON.parse(localStorage.getItem('uligarm_sesion')) || null;

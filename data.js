@@ -19,7 +19,6 @@ const paises = [
     }
 ];
 
-// Usuarios de ejemplo (con TODAS las estadísticas)
 const usuariosEjemplo = [
     {
         player_name: 'AntonioE',
