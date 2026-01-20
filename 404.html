@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Error 404 - Uligarm</title>
+    </head>
+    <body>
+        <h1>Error 404 - Página no encontrada</h1>
+        <p>Archivos disponibles:</p>
+        <ul id="fileList"></ul>
+        
+        <script>
+            // Esto te ayudará a ver qué archivos está detectando GitHub Pages
+            fetch(window.location.origin + window.location.pathname)
+                .then(response => console.log('Status:', response.status))
+                .catch(error => console.error('Error:', error));
+        </script>
+    </body>
+</html>
