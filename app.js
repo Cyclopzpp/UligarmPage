@@ -89,12 +89,10 @@ class UligarmApp {
             habilidades: []
         };
 
-        // Agregar usuario
+        // Dentro de registrar(usuario, password, country) en app.js:
         this.usuarios.push(nuevoUsuario);
-        localStorage.setItem('uligarm_usuarios', JSON.stringify(this.usuarios));
-
-        // Iniciar sesión automáticamente
-        return this.login(usuario, password);
+        localStorage.setItem('uligarm_usuarios', JSON.stringify(this.usuarios)); // <--- ESTA LÍNEA ES VITAL
+        return { success: true, user: nuevoUsuario };
     }
 
     // ========== MÉTODOS DE USUARIO ==========
@@ -152,21 +150,25 @@ class UligarmApp {
     }
 
     cambiarContrasena(nuevaPassword) {
-        const sesion = this.sesionActiva;
-        if (!sesion) return false;
+        const usuarioSesion = this.obtenerUsuarioActual();
+        if (!usuarioSesion) return false;
 
-        // 1. Buscar al usuario en la lista actual por su ID único
-        const index = this.usuarios.findIndex(u => u.pj_id === sesion.pj_id);
+        // Buscamos en la lista maestra por nombre (que es único)
+        const index = this.usuarios.findIndex(u => u.player_name === usuarioSesion.player_name);
 
         if (index !== -1 && nuevaPassword.length >= 4) {
-            // 2. Actualizar la contraseña en el array de la memoria
+            // 1. Actualizamos la lista maestra
             this.usuarios[index].player_passwd = nuevaPassword;
             
-            // 3. PERSISTENCIA: Guardar el array completo actualizado en localStorage
-            // Esto convierte a los "usuarios de ejemplo" en "usuarios locales" editables
+            // 2. IMPORTANTE: Guardamos la lista en LocalStorage
             localStorage.setItem('uligarm_usuarios', JSON.stringify(this.usuarios));
             
-            console.log("Contraseña actualizada para:", this.usuarios[index].player_name);
+            // 3. OPCIONAL: Actualizar la sesión activa para que los datos coincidan
+            // Esto evita errores si el sistema vuelve a leer la sesión antes de recargar
+            this.sesionActiva.player_passwd = nuevaPassword; 
+            localStorage.setItem('uligarm_sesion', JSON.stringify(this.sesionActiva));
+
+            console.log("Contraseña actualizada con éxito en LocalStorage");
             return true;
         }
         return false;
