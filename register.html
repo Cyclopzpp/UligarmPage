@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script src="script.js"></script> 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,7 +81,7 @@
             
             // Redirigir si ya está logueado
             if (app.sesionActiva) {
-                window.location.href = 'PERFIL.html';
+                window.location.href = 'perfil.html';
             }
             
             // Elementos DOM
@@ -149,7 +152,7 @@
                     
                     // Redirigir después de 2 segundos
                     setTimeout(() => {
-                        window.location.href = 'PERFIL.html';
+                        window.location.href = 'perfil.html';
                     }, 2000);
                 } else {
                     errorMsg.textContent = resultado.message;

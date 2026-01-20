@@ -1,23 +1,20 @@
 // 📄 app.js - Lógica principal CORREGIDA
 class UligarmApp {
     constructor() {
-        // Cargar datos de localStorage o usar ejemplos
+    // Intenta cargar de localStorage primero
         const usuariosGuardados = localStorage.getItem('uligarm_usuarios');
         
         if(usuariosGuardados){
-
-            this.usuarios = JSON.parse(usuariosGuardados) ;
-
-        }else{
-
-            this.usuarios = usuariosEjemplo ;
-            localStorage.setItem('uligarm_usuarios', JSON.stringify(this.usuarios)) ;
-            localStorage.setItem('uligarm_paises', JSON.stringify(this.paises)) ;
-
+            this.usuarios = JSON.parse(usuariosGuardados);
+        } else {
+            // SIEMPRE carga los datos de ejemplo si no hay nada
+            this.usuarios = usuariosEjemplo || [];
+            localStorage.setItem('uligarm_usuarios', JSON.stringify(this.usuarios));
+            localStorage.setItem('uligarm_paises', JSON.stringify(paises));
         }
         
         this.sesionActiva = JSON.parse(localStorage.getItem('uligarm_sesion')) || null;
-        this.paises = paises;
+        this.paises = paises || [];
     }
 
     // ========== MÉTODOS DE AUTENTICACIÓN ==========
