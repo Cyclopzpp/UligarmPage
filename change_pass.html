@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cambiar Contraseña - Uligarm</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            .change-pass-container {
+                max-width: 400px;
+            }
+            .back-link {
+                display: block;
+                margin-top: 15px;
+                color: #007bff;
+                text-decoration: none;
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="ficha change-pass-container">
+            <h2>Cambiar Contraseña</h2>
+            <p style="margin-bottom: 20px; font-size: 14px; opacity: 0.8;">Asegúrate de que tu nueva contraseña tenga al menos 6 caracteres.</p>
+            
+            <div id="errorMsg" class="error" style="display: none;"></div>
+            <div id="successMsg" class="success-message" style="display: none;"></div>
+            
+            <form id="changePassForm">
+                <input type="password" id="currentPass" placeholder="Contraseña actual" required>
+                <input type="password" id="newPass" placeholder="Nueva contraseña" required>
+                <input type="password" id="confirmPass" placeholder="Confirmar nueva contraseña" required>
+                
+                <button type="submit" class="btn">Actualizar Contraseña</button>
+            </form>
+
+            <a href="perfil.html" class="back-link">← Volver al Perfil</a>
+        </div>
+
+        <script src="data.js"></script>
+        <script src="app.js"></script>
+        <script src="script.js"></script> 
+        <script>
+            const app = new UligarmApp();
+            
+            // Seguridad: Si no hay sesión, mandar al login
+            if (!app.sesionActiva) {
+                window.location.href = 'index.html';
+            }
+
+            const form = document.getElementById('changePassForm');
+            const errorMsg = document.getElementById('errorMsg');
+            const successMsg = document.getElementById('successMsg');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                errorMsg.style.display = 'none';
+                successMsg.style.display = 'none';
+
+                const currentPass = document.getElementById('currentPass').value;
+                const newPass = document.getElementById('newPass').value;
+                const confirmPass = document.getElementById('confirmPass').value;
+
+                // 1. Validar que las nuevas coincidan
+                if (newPass !== confirmPass) {
+                    errorMsg.textContent = 'Las nuevas contraseñas no coinciden';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+
+                // 2. Validar longitud
+                if (newPass.length < 6) {
+                    errorMsg.textContent = 'La nueva contraseña debe tener al menos 6 caracteres';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+
+                // 3. Intentar el cambio
+                // Primero verificamos la actual obteniendo el usuario
+                const usuario = app.obtenerUsuarioActual();
+                if (usuario.player_passwd !== currentPass) {
+                    errorMsg.textContent = 'La contraseña actual es incorrecta';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+
+                const exito = app.cambiarContrasena(newPass);
+                if (exito) {
+                    successMsg.textContent = '¡Contraseña actualizada con éxito!';
+                    successMsg.style.display = 'block';
+                    form.reset();
+                    
+                    // Redirigir al perfil tras 2 segundos
+                    setTimeout(() => {
+                        window.location.href = 'perfil.html';
+                    }, 2000);
+                } else {
+                    errorMsg.textContent = 'Error al actualizar la contraseña';
+                    errorMsg.style.display = 'block';
+                }
+            });
+        </script>
+    </body>
+</html>
