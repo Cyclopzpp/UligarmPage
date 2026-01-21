@@ -150,25 +150,29 @@ class UligarmApp {
     }
 
     cambiarContrasena(nuevaPassword) {
-        const usuarioSesion = this.obtenerUsuarioActual();
-        if (!usuarioSesion) return false;
+        const sesion = this.sesionActiva;
+        if (!sesion) return false;
 
-        // Buscamos en la lista maestra por nombre (que es único)
-        const index = this.usuarios.findIndex(u => u.player_name === usuarioSesion.player_name);
+        // Buscamos al usuario en la lista por su ID único
+        const index = this.usuarios.findIndex(u => u.pj_id === sesion.pj_id);
 
         if (index !== -1 && nuevaPassword.length >= 4) {
-            // 1. Actualizamos la lista maestra
+            // 1. Actualizar en la lista maestra
             this.usuarios[index].player_passwd = nuevaPassword;
             
-            // 2. IMPORTANTE: Guardamos la lista en LocalStorage
+            // 2. Guardar la lista COMPLETA en localStorage (esto es lo que ya lograste)
             localStorage.setItem('uligarm_usuarios', JSON.stringify(this.usuarios));
             
-            // 3. OPCIONAL: Actualizar la sesión activa para que los datos coincidan
-            // Esto evita errores si el sistema vuelve a leer la sesión antes de recargar
-            this.sesionActiva.player_passwd = nuevaPassword; 
+            // 3. ACTUALIZAR TAMBIÉN LA SESIÓN (Para que no haya conflicto al validar)
+            // Si no haces esto, el objeto 'sesionActiva' sigue teniendo la pass vieja hasta que recargues
+            const usuarioActualizado = this.usuarios[index];
+            this.sesionActiva = {
+                usuario: usuarioActualizado.player_name,
+                pj_id: usuarioActualizado.pj_id,
+                player_passwd: nuevaPassword // Actualizamos la pass en la sesión
+            };
             localStorage.setItem('uligarm_sesion', JSON.stringify(this.sesionActiva));
 
-            console.log("Contraseña actualizada con éxito en LocalStorage");
             return true;
         }
         return false;
